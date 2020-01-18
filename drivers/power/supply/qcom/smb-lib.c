@@ -4037,12 +4037,11 @@ void asus_chg_flow_work(struct work_struct *work)
 		smblib_asus_monitor_start(smbchg_dev, 0);		//ASUS BSP Austin_T: Jeita start
 		break;
 	case CDP_CHARGER_BIT:
-		printk("asus_chg_flow_work enter CDP_CHARGER_BIT\n");
-/* Huaqin modify for ZQL1650 modify CDP charging current by fangaijun at 2018/04/18 start*/
-			set_icl = ICL_1500mA;
-/* Huaqin modify for ZQL1650 modify CDP charging current by fangaijun at 2018/04/18 end*/
-		rc = smblib_masked_write(smbchg_dev, USBIN_CURRENT_LIMIT_CFG_REG,     //reg=1370   bit7-bit0=USBIN_CURRENT_LIMIT
-			USBIN_CURRENT_LIMIT_MASK, set_icl);
+		set_icl = ICL_3000mA;
+
+		rc = smblib_masked_write(smbchg_dev, USBIN_CURRENT_LIMIT_CFG_REG,
+						USBIN_CURRENT_LIMIT_MASK,
+						set_icl);
 		if (rc < 0)
 			printk("%s: Failed to set USBIN_CURRENT_LIMIT\n", __func__);
 /* Huaqin add for ZQL1650-1287 factory version remove before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/5/8 start */
