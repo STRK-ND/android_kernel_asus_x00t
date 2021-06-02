@@ -3797,7 +3797,6 @@ void jeita_rule(void)
 			printk("%s: SW_recharge failed rc = %d\n", __func__, rc);
 		}
 		break;
-#endif
 	case JEITA_STATE_RANGE_100_to_500:
 		charging_enable = EN_BAT_CHG_EN_COMMAND_TRUE;
 		FV_CFG_reg_value = SMBCHG_FLOAT_VOLTAGE_VALUE_4P385;
